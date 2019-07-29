@@ -16,7 +16,7 @@ Template.body.helpers({
     images() { // images connects to {{#each images}}
         if (Session.get('category') === 'dogs') {
             console.log('Session set & get successful');
-            return Allimages.find({}, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'dogs' }, { sort: { createdAt: -1 } });
 
         }
         return Allimages.find({}, { sort: { createdAt: -1 } });
@@ -41,6 +41,7 @@ Template.addimages.events({
         const image_title = target.image_title.value;
         const image_source = target.image_source.value;
         const image_alt = target.image_alt.value;
+        const image_category = target.image_category.value;
 
 
         Allimages.insert({
@@ -49,6 +50,7 @@ Template.addimages.events({
             image_alt,
             createdAt: new Date(),
             image_rating: 0,
+            image_category,
         });
 
         // Clear the form
