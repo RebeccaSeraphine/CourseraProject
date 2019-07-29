@@ -40,6 +40,12 @@ Template.addimages.events({
     },
 });
 
+
+//////////////////////////////
+// Deleting IMAGES from COLLECTION 
+//////////////////////////////
+
+
 Template.body.events({
     'click .delete' () {
         Allimages.remove(this._id);
