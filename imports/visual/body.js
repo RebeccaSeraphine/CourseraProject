@@ -1,13 +1,31 @@
 import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { Session } from 'meteor/session'
 import { Allimages } from '../logic/imagecollection.js';
 import './body.html';
 import './addimages.html';
 
+
+// Creating a Reactive Dictionary to store the temporary UI state
+Template.body.onCreated(function bodyOnCreated() {
+    this.state = new ReactiveDict();
+});
+
+
 Template.body.helpers({
     images() { // images connects to {{#each images}}
+        if (Session.get('category') === 'dogs') {
+            console.log('Session set & get successful');
+            return Allimages.find({}, { sort: { createdAt: -1 } });
+
+        }
         return Allimages.find({}, { sort: { createdAt: -1 } });
     },
 });
+
+
+
+
 
 
 //////////////////////////////
@@ -49,5 +67,15 @@ Template.addimages.events({
 Template.body.events({
     'click .delete' () {
         Allimages.remove(this._id);
-    }
-})
+    },
+
+    //////////////////////////////
+    // SELECTING IMAGES from COLLECTION 
+    //////////////////////////////
+
+
+    'click .dogs' () {
+        console.log('dogs clicked');
+        Session.set('category', 'dogs');
+    },
+});
