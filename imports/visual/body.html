@@ -1,0 +1,31 @@
+<body>
+
+    <header>
+        <h1> Fluffiness Factor </h1>
+        {{> addimages}}
+    </header>
+
+    <div class="container">
+
+        <!--start of each-->{{#each images}}
+        <div class="row">
+            <div class="col-12 m-1">
+                <h4 class="imagetitle">{{image_title}}</h4>
+                <img class="standardimage" width="100%" src={{image_source}} alt="{{image_alt}}" /> &nbsp; &nbsp;
+            </div>
+        </div>
+        <!--end of each-->{{/each}}
+
+    </div>
+
+</body>
+
+<!--form to add new images-->
+<template name="addimages">
+    <form class="newimage">
+        <input type="text" name="image_title">
+        <input type="text" name="image_source">
+        <input type="text" name="image_alt">
+        <input type="submit">
+    </form>
+</template>
