@@ -1,4 +1,8 @@
 body {
-  padding: 10px;
-  font-family: sans-serif;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+.addimagesform {
+    margin-top: 50px;
 }
