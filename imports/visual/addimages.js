@@ -1,16 +1,57 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Allimages } from '../logic/imagecollection.js';
 import './body.html';
 import './addimages.html';
 
 
+var user = Meteor.userId()
+console.log(user);
+
+
+Template.registerHelper('equals',
+    function(user, admin) {
+        var user = Meteor.userId()
+        var admin = 'FpcJTpE5EjfDNqm49'
+        if (user === admin) {
+            return (user === admin)
+        };
+        return (user == !admin);
+    }
+);
+
+
+
+/*
+
+Template.registerHelper('equals',
+    function(v1, v2) {
+        return (v1 === v2);
+    }
+);
+
+Template.addimages.helpers({
+admincheck(){
+    if (user==='FpcJTpE5EjfDNqm49')
+}
+})
+
+
+images() { // images connects to {{#each images}}
+        if (Session.get('category') === 'dogs') {
+            console.log('Session set & get successful');
+            return Allimages.find({ image_category: 'dogs' }, { sort: { createdAt: -1 } });
+
+        }
+*/
 //////////////////////////////
 // ADDING IMAGES TO COLLECTION 
 //////////////////////////////
 
+
 Template.addimages.events({
     'submit .newimage' (event) {
-        console.log('test image submit event');
+        console.log('image submit event');
         event.preventDefault();
 
         const target = event.target;

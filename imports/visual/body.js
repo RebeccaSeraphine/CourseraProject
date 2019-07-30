@@ -12,7 +12,13 @@ Template.body.onCreated(function bodyOnCreated() {
 });
 
 
+
 console.log('UserID: ' + Meteor.userId());
+
+
+//////////////////////////////
+// SELECTING IMAGES from COLLECTION 
+//////////////////////////////
 
 Template.body.helpers({
     images() { // images connects to {{#each images}}
@@ -48,9 +54,6 @@ Template.body.helpers({
     },
 });
 
-//////////////////////////////
-// SELECTING IMAGES from COLLECTION 
-//////////////////////////////
 
 
 Template.body.events({
