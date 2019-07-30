@@ -81,5 +81,19 @@ Template.body.events({
     'click .all' () {
         Session.set('category', 'all');
     },
+    'click .upvote' () {
+        console.log('upvoted');
+        // var currentitem = Allimages.find({ _id: this._id })
+        // console.log(currentitem)
+        Allimages.update(this._id, { $set: { image_rating: this.image_rating + 1 } })
+
+    },
+    'click .downvote' () {
+        console.log('downvoted');
+        // var currentitem = Allimages.find({ _id: this._id })
+        // console.log(currentitem)
+        Allimages.update(this._id, { $set: { image_rating: this.image_rating - 1 } })
+
+    },
 
 });

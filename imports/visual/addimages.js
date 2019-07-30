@@ -6,7 +6,7 @@ import './addimages.html';
 
 
 var user = Meteor.userId()
-console.log(user);
+console.log('User ' + user);
 
 
 Template.registerHelper('equals',

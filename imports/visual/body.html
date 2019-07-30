@@ -60,6 +60,12 @@
             <div class="col-12 m-1 ">
                 <h4 class="imagetitle ">{{#if equals user admin}}{{> deleteimage}} &nbsp;{{/if}} {{image_title}} </h4>
                 <img class="standardimage " width="100% " src={{image_source}} alt="{{image_alt}} " /> &nbsp; &nbsp;
+                <div>
+                    <button type="button" class="btn btn-light upvote">&#8593;</button>
+                    <button type="button" class="btn btn-light downvote">&#8595;</button> &nbsp;
+                    <p class="d-inline-flex"> Ranking: {{image_rating}} </p>
+                </div>
+                <hr>
             </div>
         </div>
         <!--end of each-->{{/each}}
