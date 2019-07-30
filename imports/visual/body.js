@@ -24,32 +24,32 @@ Template.body.helpers({
     images() { // images connects to {{#each images}}
         if (Session.get('category') === 'dogs') {
             console.log('Session set & get successful');
-            return Allimages.find({ image_category: 'dogs' }, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'dogs' }, { sort: { image_rating: -1 } });
 
         }
         if (Session.get('category') === 'cats') {
             console.log('Session set & get successful');
-            return Allimages.find({ image_category: 'cats' }, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'cats' }, { sort: { image_rating: -1 } });
 
         }
         if (Session.get('category') === 'lamas') {
-            return Allimages.find({ image_category: 'lamas' }, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'lamas' }, { sort: { image_rating: -1 } });
         }
 
         if (Session.get('category') === 'rabbits') {
-            return Allimages.find({ image_category: 'rabbits' }, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'rabbits' }, { sort: { image_rating: -1 } });
         }
         if (Session.get('category') === 'birds') {
-            return Allimages.find({ image_category: 'birds' }, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'birds' }, { sort: { image_rating: -1 } });
         }
         if (Session.get('category') === 'more') {
-            return Allimages.find({ image_category: 'more' }, { sort: { createdAt: -1 } });
+            return Allimages.find({ image_category: 'more' }, { sort: { image_rating: -1 } });
         }
         if (Session.get('category') === 'all') {
-            return Allimages.find({}, { sort: { createdAt: -1 } });
+            return Allimages.find({}, { sort: { image_rating: -1 } });
         }
 
-        return Allimages.find({}, { sort: { createdAt: -1 } });
+        return Allimages.find({}, { sort: { image_rating: -1 } });
 
     },
 });
