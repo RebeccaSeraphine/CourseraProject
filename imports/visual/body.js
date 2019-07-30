@@ -12,6 +12,8 @@ Template.body.onCreated(function bodyOnCreated() {
 });
 
 
+console.log('UserID: ' + Meteor.userId());
+
 Template.body.helpers({
     images() { // images connects to {{#each images}}
         if (Session.get('category') === 'dogs') {
@@ -42,6 +44,7 @@ Template.body.helpers({
         }
 
         return Allimages.find({}, { sort: { createdAt: -1 } });
+
     },
 });
 
@@ -79,6 +82,8 @@ Template.addimages.events({
         target.image_title.value = '';
         target.image_source.value = '';
         target.image_alt.value = '';
+        target.image_rating.value = '';
+        target.image_category.value = '';
     },
 });
 
@@ -87,16 +92,18 @@ Template.addimages.events({
 // Deleting IMAGES from COLLECTION 
 //////////////////////////////
 
-
-Template.body.events({
+Template.deleteimage.events({
     'click .delete' () {
         Allimages.remove(this._id);
     },
+});
 
-    //////////////////////////////
-    // SELECTING IMAGES from COLLECTION 
-    //////////////////////////////
+//////////////////////////////
+// SELECTING IMAGES from COLLECTION 
+//////////////////////////////
 
+
+Template.body.events({
 
     'click .dogs' () {
         console.log('dogs clicked');
@@ -118,7 +125,7 @@ Template.body.events({
     'click .more' () {
         Session.set('category', 'more');
     },
-    'click . all' () {
+    'click .all' () {
         Session.set('category', 'all');
     },
 

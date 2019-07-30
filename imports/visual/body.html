@@ -47,7 +47,7 @@
     <div class="container ">
         <div class="row ">
             <div class="addimagesform ">
-                {{> addimages}}
+                {{#if currentUser}} {{> addimages}} {{/if}}
                 <!--Template is separate, in addimages.html -->
             </div>
         </div>
@@ -58,8 +58,7 @@
         <!--start of each-->{{#each images}}
         <div class="row ">
             <div class="col-12 m-1 ">
-                <h4 class="imagetitle ">{{image_title}} </h4>
-                <button class="delete ">X</button>
+                <h4 class="imagetitle ">{{> deleteimage}} &nbsp; {{image_title}} </h4>
                 <img class="standardimage " width="100% " src={{image_source}} alt="{{image_alt}} " /> &nbsp; &nbsp;
             </div>
         </div>
