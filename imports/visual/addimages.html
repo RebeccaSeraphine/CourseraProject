@@ -1,11 +1,19 @@
-<!--form to add new images-->
+<!--form to add new images (inserted into body.html)-->
 <template name="addimages">
-        <form class="newimage">
-            <input type="text" name="image_title" placeholder="title">
-            <input type="text" name="image_source" placeholder="source">
-            <input type="text" name="image_alt" placeholder="alt">
-            <input type="number" name="image_ranking" placeholder="number">
-            <input type="text" name="image_category" placeholder="category">
-            <input type="submit">
-        </form>
+    <div class="container">
+        <div class="d-flex justify-content-center ">
+            <div class="border">
+                <p> <strong>Add a new image</strong></p>
+                <p>Note: <br/> Put images in the public/images folder first. Source example: images/filname.jpg <br/> Available Categories: dogs, cats, lamas, rabbits, birds, more </p> 
+                <form class="newimage">
+                    <input type="text" name="image_title" placeholder="title">
+                    <input type="text" name="image_source" placeholder="source">
+                    <input type="text" name="image_alt" placeholder="alt">
+                    <input type="number" name="image_ranking" placeholder="rating">
+                    <input type="text" name="image_category" placeholder="category">
+                    <input type="submit" value="add">
+                </form>
+            </div>
+        </div>
+    </div>
 </template>

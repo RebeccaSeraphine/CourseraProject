@@ -14,8 +14,13 @@ body {
 
 .addimagesform {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .category {
     margin-bottom: 5px;
+}
+
+.border {
+    padding: 20px;
 }
