@@ -1,85 +1,112 @@
+<!-- Body of the Application-->
+
 <body>
+
+    <!-- HEADER START-->
     <header>
-        <div class="container">
-            <div class="d-flex justify-content-center">
-                <h1>Fluffiness Factor</h1>
-            </div>
-        </div>
 
-
-        <div class="d-flex justify-content-center">
-            <div class="btn-group flex-wrap flex-md-nowrap" data-toggle="buttons" role="group">
-                <button type="button" class="all category btn btn-secondary">All</button>
-                <button type="button" class="dogs category btn btn-secondary">Dogs</button>
-                <button type="button" class="cats category btn btn-secondary">Cats</button>
-                <button type="button" class="lamas category btn btn-secondary">Alpacas & Lamas</button>
-                <button type="button" class="rabbits category btn btn-secondary">Rabbits</button>
-                <button type="button" class="birds category btn btn-secondary">Birds</button>
-                <button type="button" class="more category btn btn-secondary">More Fluff</button>
-            </div>
-        </div>
-
-
-
-
-        <!-- NAVIGATION 
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" href="#">Fluffiness Factor</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dogs <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cats</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Alpacas & Lamas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Rabits</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Birds</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">More Furrrr</a>
+        <!-- Navigation bar containing the login form (packages: accounts-ui & accounts-password)-->
+        <div class="container ">
+            <nav class="navbar navbar-light ">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        {{> loginButtons align="right" }}
                     </li>
                 </ul>
-            </div>
-        </nav> -->
-    </header>
+            </nav>
+        </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="addimagesform">
+        <!-- Page title-->
+        <div class="container">
+            <div class="d-flex justify-content-center ">
+                <h1 class="pagetitle">Fluffiness Factor</h1>
+            </div>
+            <div class="d-flex justify-content-center ">
+                <p class="pagesubtitle">Presenting to you the fluffiest animals in the known universe</p>
+            </div>
+        </div>
+
+        <!-- Animal category buttons-->
+        <div class="d-flex justify-content-center ">
+            <div class="btn-group flex-wrap flex-md-nowrap " data-toggle="buttons " role="group ">
+                <button type="button" class="all category btn btn-secondary">All</button>
+                <button type="button" class="dogs category btn btn-secondary ">Dogs</button>
+                <button type="button" class="cats category btn btn-secondary ">Cats</button>
+                <button type="button" class="lamas category btn btn-secondary ">Alpacas & Lamas</button>
+                <button type="button" class="rabbits category btn btn-secondary ">Rabbits</button>
+                <button type="button" class="birds category btn btn-secondary ">Birds</button>
+                <button type="button" class="more category btn btn-secondary ">More Fluff</button>
+            </div>
+        </div>
+
+    </header>
+    <!-- HEADER END-->
+
+
+    <!-- Form for adding new images INSERTED HERE-->
+    <div class="container ">
+        <div class="row ">
+            <div class="addimagesform ">
                 {{> addimages}}
+                <!--Template is separate, in addimages.html -->
             </div>
         </div>
     </div>
 
-    <div class="container">
-
-
+    <!-- Image Gallery INSERTED HERE (connects to Allimages Collection & Template.body.helpers in body.js)-->
+    <div class="container ">
         <!--start of each-->{{#each images}}
-        <div class="row">
-            <div class="col-12 m-1">
-                <h4 class="imagetitle">{{image_title}} </h4>
-                <button class="delete">X</button>
-                <img class="standardimage" width="100%" src={{image_source}} alt="{{image_alt}}" /> &nbsp; &nbsp;
+        <div class="row ">
+            <div class="col-12 m-1 ">
+                <h4 class="imagetitle ">{{image_title}} </h4>
+                <button class="delete ">X</button>
+                <img class="standardimage " width="100% " src={{image_source}} alt="{{image_alt}} " /> &nbsp; &nbsp;
             </div>
         </div>
         <!--end of each-->{{/each}}
-
     </div>
 
     <!--Using Bootstrap 4-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
 
 </body>
+<!-- Body  END-->
+
+
+
+
+
+
+<!--BACKUP-->
+<!-- NAVIGATION (OLD)
+            <nav class="navbar navbar-expand-md navbar-light bg-light ">
+                <a class="navbar-brand " href="# ">Fluffiness Factor</a>
+                <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
+                      <span class="navbar-toggler-icon "></span>
+                    </button>
+    
+                <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+                    <ul class="navbar-nav mr-auto ">
+                        <li class="nav-item ">
+                            <a class="nav-link " href="# ">Dogs <span class="sr-only ">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="# ">Cats</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="# ">Alpacas & Lamas</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="# ">Rabits</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="# ">Birds</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="# ">More Furrrr</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav> -->

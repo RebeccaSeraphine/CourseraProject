@@ -1,3 +1,12 @@
+.pagetitle {
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.pagesubtitle {
+    margin-bottom: 30px;
+}
+
 body {
     padding: 10px;
     font-family: sans-serif;
