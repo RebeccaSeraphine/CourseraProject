@@ -33,7 +33,7 @@
                 <button type="button" class="dogs category btn btn-secondary ">Dogs</button>
                 <button type="button" class="cats category btn btn-secondary ">Cats</button>
                 <button type="button" class="lamas category btn btn-secondary ">Alpacas & Lamas</button>
-                <button type="button" class="rabbits category btn btn-secondary ">Rabbits</button>
+                <button type="button" class="rabbits category btn btn-secondary ">Hamsters & Rabbits</button>
                 <button type="button" class="birds category btn btn-secondary ">Birds</button>
                 <button type="button" class="more category btn btn-secondary ">More Fluff</button>
             </div>
@@ -57,10 +57,10 @@
     <div class="container ">
         <!--start of each-->{{#each images}}
         <div class="row">
-            <div class="col-12 col-md-2">
+            <div class="col-12 col-md-2 col-lg-3">
 
             </div>
-            <div class="col-12 col-md-8 m-1">
+            <div class="col-12 col-md-8 col-lg-6 m-1">
                 <h4 class="imagetitle ">{{#if equals user admin}}{{> deleteimage}} &nbsp;{{/if}} {{image_title}} </h4>
                 <img class="standardimage " width="100% " src={{image_source}} alt="{{image_alt}} " /> &nbsp; &nbsp;
                 <div>
