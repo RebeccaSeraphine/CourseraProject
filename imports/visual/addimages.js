@@ -5,10 +5,11 @@ import './body.html';
 import './addimages.html';
 
 
-var user = Meteor.userId()
-console.log('User ' + user);
+//var user = Meteor.userId()
+//console.log('User ' + user);
 
 
+// Enables the use of {{#if equals user admin}} {{> ...}} {{/if}} --> checking if logged in user has the admin user ID
 Template.registerHelper('equals',
     function(user, admin) {
         var user = Meteor.userId()
@@ -22,36 +23,14 @@ Template.registerHelper('equals',
 
 
 
-/*
-
-Template.registerHelper('equals',
-    function(v1, v2) {
-        return (v1 === v2);
-    }
-);
-
-Template.addimages.helpers({
-admincheck(){
-    if (user==='FpcJTpE5EjfDNqm49')
-}
-})
-
-
-images() { // images connects to {{#each images}}
-        if (Session.get('category') === 'dogs') {
-            console.log('Session set & get successful');
-            return Allimages.find({ image_category: 'dogs' }, { sort: { createdAt: -1 } });
-
-        }
-*/
 //////////////////////////////
-// ADDING IMAGES TO COLLECTION 
+// ADDING IMAGES TO COLLECTION --> available to admin user only
 //////////////////////////////
 
 
 Template.addimages.events({
     'submit .newimage' (event) {
-        console.log('image submit event');
+        // console.log('image submit event');
         event.preventDefault();
 
         const target = event.target;
@@ -63,7 +42,8 @@ Template.addimages.events({
 
         Meteor.call('allimages.insert', image_title, image_source, image_alt, image_category, image_rating);
 
-        /* Allimages.insert({        //With insecure, previous to method call
+        //With insecure, previous to method call
+        /* Allimages.insert({        
              image_title,
              image_source,
              image_alt,
@@ -82,14 +62,16 @@ Template.addimages.events({
 
 
 //////////////////////////////
-// Deleting IMAGES from COLLECTION 
+// Deleting IMAGES from COLLECTION --> available to admin user only
 //////////////////////////////
 
 
 Template.deleteimage.events({
     'click .delete' () {
-        const removethis = this._id; //this._id not working in method direktly --> give in as parameter
+        const removethis = this._id; // sending this._id as parameter to the method as const removethis
         Meteor.call('allimages.remove', removethis);
-        /* Allimages.remove(this._id); */ //With insecure, previous to method call
+
+        //With insecure, previous to method call
+        /* Allimages.remove(this._id); */
     },
 });

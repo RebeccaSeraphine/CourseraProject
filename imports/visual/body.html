@@ -43,99 +43,56 @@
     <!-- HEADER END-->
 
 
-    <!-- Form for adding new images INSERTED HERE-->
+    <!-- Form for adding new images inserted here, Template is in addimages.html-->
     <div class="container ">
         <div class="row ">
             <div class="addimagesform ">
+                <!--Checking if logged in user has admin user ID, enabled in addimages.js -->
                 {{#if equals user admin}} {{> addimages}} {{/if}}
-                <!--Template is separate, in addimages.html -->
             </div>
         </div>
     </div>
 
-    <!-- Image Gallery INSERTED HERE (connects to Allimages Collection & Template.body.helpers in body.js)-->
+    <!-- IMAGE GALLERY inserted here (connects to Allimages Collection & Template.body.helpers in body.js)-->
     <div class="container ">
         <!--start of each-->{{#each images}}
         <div class="row">
-            <div class="col-12 col-md-2 col-lg-3">
 
+            <div class="col-12 col-md-2 col-lg-3">
+                <!--empty div for layout purposes-->
             </div>
+
             <div class="col-12 col-md-8 col-lg-6 m-1">
                 <h4 class="imagetitle ">{{#if equals user admin}}{{> deleteimage}} &nbsp;{{/if}} {{image_title}} </h4>
                 <img class="standardimage " width="100% " src={{image_source}} alt="{{image_alt}} " /> &nbsp; &nbsp;
                 <div>
-                    <!--  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-light upvote">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> &#8593;
-                                  </label>
-                        <label class="btn btn-light downvote">
-                                    <input type="radio" name="options" id="option2" autocomplete="off"> &#8595;
-                                  </label>
-                    </div> -->
                     {{> votingbuttons}}
-
+                    <!--Template is below, in body.html-->
                     <p class="d-inline-flex"> Ranking: {{image_rating}} </p>
                 </div>
                 <hr>
             </div>
+
         </div>
         <!--end of each-->{{/each}}
     </div>
 
-
+    <!--Back to top button-->
     <div class="sticky-bottom float-right mb-1 mr-0">
         <a href="#top"> <button class="btn btn-secondary">&#8593;</button></a>
     </div>
 
 
-
-    <!--Using Bootstrap 4-->
+    <!--Enabling Bootstrap 4-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
 
 </body>
-
 <!-- Body  END-->
+
+
 <template name="votingbuttons">
-    
         <button type="button" id="upvotebutton" class="btn btn-light upvote">&#8593;</button>
         <button type="button" id="downvotebutton" class="btn btn-light downvote">&#8595;</button> &nbsp;
- 
 </template>
-
-
-
-
-
-<!--BACKUP-->
-<!-- NAVIGATION (OLD)
-            <nav class="navbar navbar-expand-md navbar-light bg-light ">
-                <a class="navbar-brand " href="# ">Fluffiness Factor</a>
-                <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
-                      <span class="navbar-toggler-icon "></span>
-                    </button>
-    
-                <div class="collapse navbar-collapse " id="navbarSupportedContent ">
-                    <ul class="navbar-nav mr-auto ">
-                        <li class="nav-item ">
-                            <a class="nav-link " href="# ">Dogs <span class="sr-only ">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="# ">Cats</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="# ">Alpacas & Lamas</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="# ">Rabits</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="# ">Birds</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="# ">More Furrrr</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav> -->
