@@ -91,28 +91,70 @@ Template.body.events({
     'click .all' () {
         Session.set('category', 'all');
     },
+
+
+
     'click .upvote' () {
+
         Session.set('votedup', 'yes');
-        console.log(Session.get('votedup'));
-        if (Session.get('votedup') === 'yes') {
-            console.log('upvote blocked');
+
+
+        if (Session.get('votedup') === 'yes' && Session.get('voteddown') != 'yes') {
+            console.log('upvoted case 0')
+            const upvotethis = this._id; //this._id not working in method direktly --> give in as parameter
+            const image_newrating = this.image_rating + 1; //needed as method parameter
+            // var currentitem = Allimages.find({ _id: this._id })
+            // console.log(currentitem)
+            // Allimages.update(this._id, { $set: { image_rating: this.image_rating + 1 } }) --> With insecure, previous to method call
+            Meteor.call('allimages.upvote', upvotethis, image_newrating);
+
             document.getElementById("upvotebutton").disabled = true;
-            console.log('upvote blocked');
+            document.getElementById("downvotebutton").disabled = false;
+            console.log('upvoted case 1')
+
+
+        } else if (Session.get('votedup') === 'yes' && Session.get('voteddown') === 'yes') {
+
+            const upvotethis = this._id; //this._id not working in method direktly --> give in as parameter
+            const image_newrating = this.image_rating + 1; //needed as method parameter
+            Meteor.call('allimages.upvote', upvotethis, image_newrating);
+
+            Session.set('voteddown', 'no');
+            Session.set('votedup', 'no');
+            console.log('upvoted case 2');
+
         }
-        const upvotethis = this._id; //this._id not working in method direktly --> give in as parameter
-        const image_newrating = this.image_rating + 1; //needed as method parameter
-        // var currentitem = Allimages.find({ _id: this._id })
-        // console.log(currentitem)
-        // Allimages.update(this._id, { $set: { image_rating: this.image_rating + 1 } }) --> With insecure, previous to method call
-        Meteor.call('allimages.upvote', upvotethis, image_newrating);
     },
+
     'click .downvote' () {
-        const downvotethis = this._id;
-        const image_newrating = this.image_rating - 1;
-        // var currentitem = Allimages.find({ _id: this._id })
-        // console.log(currentitem)
-        // Allimages.update(this._id, { $set: { image_rating: this.image_rating - 1 } }) --> With insecure, previous to method call
-        Meteor.call('allimages.downvote', downvotethis, image_newrating);
+
+        Session.set('voteddown', 'yes');
+
+        if (Session.get('voteddown') === 'yes' && Session.get('votedup') != 'yes') {
+
+            const downvotethis = this._id;
+            const image_newrating = this.image_rating - 1;
+            // var currentitem = Allimages.find({ _id: this._id })
+            // console.log(currentitem)
+            // Allimages.update(this._id, { $set: { image_rating: this.image_rating - 1 } }) --> With insecure, previous to method call
+            Meteor.call('allimages.downvote', downvotethis, image_newrating);
+            document.getElementById("downvotebutton").disabled = true;
+            document.getElementById("upvotebutton").disabled = false;
+            console.log('downvoted case 1');
+
+        } else if (Session.get('voteddown') === 'yes' && Session.get('votedup') === 'yes') {
+
+            const downvotethis = this._id;
+            const image_newrating = this.image_rating - 1;
+            Meteor.call('allimages.downvote', downvotethis, image_newrating);
+
+
+            Session.set('voteddown', 'no');
+            Session.set('votedup', 'no');
+            console.log('downvoted case 2');
+
+        }
+
     },
 
 });
