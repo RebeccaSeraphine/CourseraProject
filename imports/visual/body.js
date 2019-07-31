@@ -82,18 +82,21 @@ Template.body.events({
         Session.set('category', 'all');
     },
     'click .upvote' () {
-        console.log('upvoted');
+        const upvotethis = this._id; //this._id not working in method direktly --> give in as parameter
+        const image_newrating = this.image_rating + 1; //needed as method parameter
         // var currentitem = Allimages.find({ _id: this._id })
         // console.log(currentitem)
-        Allimages.update(this._id, { $set: { image_rating: this.image_rating + 1 } })
+        // Allimages.update(this._id, { $set: { image_rating: this.image_rating + 1 } }) --> With insecure, previous to method call
+        Meteor.call('allimages.upvote', upvotethis, image_newrating);
 
     },
     'click .downvote' () {
-        console.log('downvoted');
+        const downvotethis = this._id;
+        const image_newrating = this.image_rating - 1;
         // var currentitem = Allimages.find({ _id: this._id })
         // console.log(currentitem)
-        Allimages.update(this._id, { $set: { image_rating: this.image_rating - 1 } })
-
+        // Allimages.update(this._id, { $set: { image_rating: this.image_rating - 1 } }) --> With insecure, previous to method call
+        Meteor.call('allimages.downvote', downvotethis, image_newrating);
     },
 
 });

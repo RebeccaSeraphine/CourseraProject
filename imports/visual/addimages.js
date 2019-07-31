@@ -59,16 +59,18 @@ Template.addimages.events({
         const image_source = target.image_source.value;
         const image_alt = target.image_alt.value;
         const image_category = target.image_category.value;
+        const image_rating = 0;
 
+        Meteor.call('allimages.insert', image_title, image_source, image_alt, image_category, image_rating);
 
-        Allimages.insert({
-            image_title,
-            image_source,
-            image_alt,
-            createdAt: new Date(),
-            image_rating: 0,
-            image_category,
-        });
+        /* Allimages.insert({        //With insecure, previous to method call
+             image_title,
+             image_source,
+             image_alt,
+             createdAt: new Date(),
+             image_rating: 0,
+             image_category,
+         }); */
 
         // Clear the form
         target.image_title.value = '';
@@ -83,8 +85,11 @@ Template.addimages.events({
 // Deleting IMAGES from COLLECTION 
 //////////////////////////////
 
+
 Template.deleteimage.events({
     'click .delete' () {
-        Allimages.remove(this._id);
+        const removethis = this._id; //this._id not working in method direktly --> give in as parameter
+        Meteor.call('allimages.remove', removethis);
+        /* Allimages.remove(this._id); */ //With insecure, previous to method call
     },
 });
