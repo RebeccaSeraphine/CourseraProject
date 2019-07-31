@@ -64,8 +64,16 @@
                 <h4 class="imagetitle ">{{#if equals user admin}}{{> deleteimage}} &nbsp;{{/if}} {{image_title}} </h4>
                 <img class="standardimage " width="100% " src={{image_source}} alt="{{image_alt}} " /> &nbsp; &nbsp;
                 <div>
-                    <button type="button" class="btn btn-light upvote">&#8593;</button>
-                    <button type="button" class="btn btn-light downvote">&#8595;</button> &nbsp;
+                    <!--  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-light upvote">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> &#8593;
+                                  </label>
+                        <label class="btn btn-light downvote">
+                                    <input type="radio" name="options" id="option2" autocomplete="off"> &#8595;
+                                  </label>
+                    </div> -->
+                    {{> votingbuttons}}
+
                     <p class="d-inline-flex"> Ranking: {{image_rating}} </p>
                 </div>
                 <hr>
@@ -74,14 +82,22 @@
         <!--end of each-->{{/each}}
     </div>
 
+
+
     <!--Using Bootstrap 4-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
 
 </body>
-<!-- Body  END-->
 
+<!-- Body  END-->
+<template name="votingbuttons">
+    
+        <button type="button" id="upvotebutton" class="btn btn-light upvote">&#8593;</button>
+        <button type="button" class="btn btn-light downvote">&#8595;</button> &nbsp;
+ 
+</template>
 
 
 

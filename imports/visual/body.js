@@ -55,6 +55,15 @@ Template.body.helpers({
     },
 });
 
+Template.votingbuttons.helpers({
+    buttons() {
+        if (Session.get('votedup' === 'yes')) {
+            document.getElementById("upvotebutton").disabled = true;
+        }
+        console.log('button helper here');
+    }
+});
+
 
 
 Template.body.events({
@@ -83,13 +92,19 @@ Template.body.events({
         Session.set('category', 'all');
     },
     'click .upvote' () {
+        Session.set('votedup', 'yes');
+        console.log(Session.get('votedup'));
+        if (Session.get('votedup') === 'yes') {
+            console.log('upvote blocked');
+            document.getElementById("upvotebutton").disabled = true;
+            console.log('upvote blocked');
+        }
         const upvotethis = this._id; //this._id not working in method direktly --> give in as parameter
         const image_newrating = this.image_rating + 1; //needed as method parameter
         // var currentitem = Allimages.find({ _id: this._id })
         // console.log(currentitem)
         // Allimages.update(this._id, { $set: { image_rating: this.image_rating + 1 } }) --> With insecure, previous to method call
         Meteor.call('allimages.upvote', upvotethis, image_newrating);
-
     },
     'click .downvote' () {
         const downvotethis = this._id;
