@@ -9,6 +9,7 @@ import './addimages.html';
 // Creating a Reactive Dictionary to store the temporary UI state
 Template.body.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
+    Meteor.subscribe('allimages'); // needed after autopublish package is removed
 });
 
 

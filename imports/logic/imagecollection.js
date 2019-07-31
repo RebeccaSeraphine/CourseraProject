@@ -52,3 +52,13 @@ Meteor.methods({
         console.log('downvoted');
     },
 });
+
+//////////////////////////////
+// Publication (required after autopublish package is removed)
+//////////////////////////////
+
+if (Meteor.isServer) {
+    Meteor.publish('allimages', function imagesPublication() {
+        return Allimages.find();
+    });
+}
